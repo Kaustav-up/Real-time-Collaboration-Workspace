@@ -1,0 +1,436 @@
+:root {
+  --bg: #ffffff;
+  --side: #f7f6f3;
+  --ink: #2f3437;
+  --muted: #8a8f94;
+  --line: #e7e5e0;
+  --accent: #2383e2;
+  --accent-soft: #e7f1fc;
+  --danger: #c0392b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 290px 1fr;
+}
+
+.sidebar {
+  background: var(--side);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 16px 12px;
+}
+
+.side-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 12px;
+}
+
+.side-head h1 {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.primary {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 8px;
+}
+
+.primary:hover {
+  background: #1b6fc4;
+}
+
+.primary.small {
+  padding: 5px 11px;
+  font-size: 13px;
+}
+
+.search {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.note-list {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.note-item {
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: 2px;
+}
+
+.note-item:hover {
+  background: #ecebe7;
+}
+
+.note-item.active {
+  background: var(--accent-soft);
+}
+
+.note-open {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding: 9px 34px 9px 10px;
+}
+
+.note-title {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-preview {
+  font-size: 13px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-time {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.note-delete {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  opacity: 0;
+}
+
+.note-item:hover .note-delete,
+.note-delete:focus-visible {
+  opacity: 1;
+}
+
+.note-delete:hover {
+  color: var(--danger);
+  background: #fff;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 14px 8px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.topbar {
+  display: none;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-btn {
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 12px;
+}
+
+.banner {
+  background: #fdecea;
+  color: var(--danger);
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.note-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tool {
+  min-width: 32px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tool:hover {
+  background: #efeeea;
+}
+
+.tool.on {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.t-bold {
+  font-weight: 700;
+}
+
+.t-italic {
+  font-style: italic;
+}
+
+.t-underline {
+  text-decoration: underline;
+}
+
+.t-code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--line);
+  margin: 0 6px;
+}
+
+.status {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status.saving {
+  color: #b7791f;
+}
+
+.status.synced {
+  color: var(--accent);
+}
+
+.status.error {
+  color: var(--danger);
+}
+
+.page {
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.title-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+.title-input::placeholder {
+  color: #c9ccd0;
+}
+
+.editor-box {
+  min-height: 55vh;
+  font-size: 16px;
+  line-height: 1.7;
+  cursor: text;
+}
+
+.editor-box .public-DraftEditorPlaceholder-root {
+  color: #b9bdc2;
+}
+
+.editor-box h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.4rem;
+}
+
+.editor-box h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 1rem 0 0.3rem;
+}
+
+.editor-box code,
+.editor-box [style*="monospace"] {
+  background: #efeeea;
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.88em;
+}
+
+.quote-block {
+  border-left: 3px solid var(--ink);
+  padding-left: 14px;
+  margin: 6px 0;
+  color: #55595d;
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+}
+
+.empty h2 {
+  color: var(--ink);
+}
+
+.setup {
+  height: 100%;
+}
+
+.setup code {
+  background: #efeeea;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.scrim {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 290px;
+    max-width: 85vw;
+    z-index: 30;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 20;
+  }
+
+  .topbar {
+    display: block;
+  }
+
+  .note-top {
+    padding: 8px 14px;
+  }
+
+  .page {
+    padding: 24px 16px 60px;
+  }
+
+  .title-input {
+    font-size: 1.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+}
